@@ -19,6 +19,15 @@ function LoadingPages() {
       password: form.password.value,
     };
 
+    const isUser = user?.username !== 'admin' || user?.password !== 'admin';
+
+    if (isUser) {
+      alert('Невероное имя пользователя или пароль');
+      form.username.value = '';
+      form.password.value = '';
+      return;
+    }
+
     setAuthentication(user);
 
     signin(user, () => navigate('/currentTodos', { replace: true }));

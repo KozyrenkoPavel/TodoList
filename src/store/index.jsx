@@ -1,4 +1,3 @@
-/* eslint-disable react-refresh/only-export-components */
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import {
   persistStore,
