@@ -1,9 +1,14 @@
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../hook/useUser';
+import { passAuthentication } from '../store/todoSlice';
+import { useDispatch } from 'react-redux';
 
 function LoadingPages() {
   const navigate = useNavigate();
   const { signin } = useUser();
+  const dispatch = useDispatch();
+
+  const setAuthentication = (user) => dispatch(passAuthentication(user));
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -13,6 +18,8 @@ function LoadingPages() {
       username: form.username.value,
       password: form.password.value,
     };
+
+    setAuthentication(user);
 
     signin(user, () => navigate('/currentTodos', { replace: true }));
   };

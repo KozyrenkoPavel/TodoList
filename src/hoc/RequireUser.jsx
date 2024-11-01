@@ -1,10 +1,10 @@
 import { Navigate, Outlet } from 'react-router-dom';
-import { useUser } from '../hook/useUser';
+import { useSelector } from 'react-redux';
 
 function RequireUser() {
-  const { user } = useUser();
+  const user = useSelector((state) => state.storeTodos.storeTodos.user);
 
-  const isUser = user.username !== 'admin' || user.password !== 'admin';
+  const isUser = user?.username !== 'admin' || user?.password !== 'admin';
 
   if (isUser) {
     return <Navigate to="/login" />;

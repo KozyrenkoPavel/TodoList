@@ -1,3 +1,6 @@
+import { Provider } from 'react-redux';
+import store, { persistor } from './store/index.jsx';
+import { PersistGate } from 'redux-persist/integration/react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import { UserProvider } from './hoc/UserProvider.jsx';
@@ -9,20 +12,24 @@ import RequireUser from './hoc/RequireUser.jsx';
 
 function App() {
   return (
-    <UserProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route element={<RequireUser />}>
-            <Route path="/" element={<Layout />}>
-              <Route path="currentTodos" element={<CurrentTodosPages />} />
-              <Route path="allTodos" element={<AllTodosPages />} />
-            </Route>
-          </Route>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <UserProvider>
+          <BrowserRouter>
+            <Routes>
+              <Route element={<RequireUser />}>
+                <Route path="/" element={<Layout />}>
+                  <Route path="currentTodos" element={<CurrentTodosPages />} />
+                  <Route path="allTodos" element={<AllTodosPages />} />
+                </Route>
+              </Route>
 
-          <Route path="/login" element={<LoadingPages />} />
-        </Routes>
-      </BrowserRouter>
-    </UserProvider>
+              <Route path="/login" element={<LoadingPages />} />
+            </Routes>
+          </BrowserRouter>
+        </UserProvider>
+      </PersistGate>
+    </Provider>
   );
 }
 

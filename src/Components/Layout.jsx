@@ -1,8 +1,13 @@
 import { NavLink, Outlet } from 'react-router-dom';
+import { outAccount } from '../store/todoSlice';
+import { useDispatch } from 'react-redux';
 
 const setActive = ({ isActive }) => (isActive ? 'active-link' : '');
 
 function Layout() {
+  const dispatch = useDispatch();
+  const setOutAccount = () => dispatch(outAccount());
+
   return (
     <>
       <header>
@@ -17,6 +22,8 @@ function Layout() {
       </header>
 
       <Outlet />
+
+      <button onClick={setOutAccount}>Выйти из учетной записи</button>
     </>
   );
 }
