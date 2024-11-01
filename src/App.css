@@ -1,0 +1,8 @@
+a {
+  text-decoration: overline;
+  font-size: 18px;
+}
+
+.active-link {
+  color: black;
+}
