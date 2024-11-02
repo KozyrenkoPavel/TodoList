@@ -1,18 +1,33 @@
 import { NavLink, Outlet } from 'react-router-dom';
-import { outAccount } from '../store/todoSlice';
+import { addTodo, outAccount } from '../store/todoSlice';
 import { useDispatch } from 'react-redux';
+import { useState } from 'react';
+import InputTodo from './InputTodo';
 
 const setActive = ({ isActive }) => (isActive ? 'active-link' : '');
-
+// window.localStorage.clear();
 function Layout() {
   const dispatch = useDispatch();
+  const [text, setText] = useState('');
+
   const setOutAccount = () => dispatch(outAccount());
 
+  const addTask = () => {
+    dispatch(
+      addTodo({
+        id: new Date().getMilliseconds(),
+        text: text,
+        comleted: false,
+      })
+    );
+
+    setText('');
+  };
   return (
     <>
       <header>
         <div className="links">
-          <NavLink className={setActive} to="/currentTodos">
+          <NavLink className={setActive} to="/">
             Текущие дела
           </NavLink>
           <NavLink className={setActive} to="/allTodos">
@@ -20,6 +35,8 @@ function Layout() {
           </NavLink>
         </div>
       </header>
+
+      <InputTodo text={text} handleInput={setText} handleSubmit={addTask} />
 
       <Outlet />
 

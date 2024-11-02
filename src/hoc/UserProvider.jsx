@@ -1,12 +1,12 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react-refresh/only-export-components */
 
-import { createContext } from 'react';
+import { createContext } from "react";
 
 export const UserContext = createContext(null);
 
 export const UserProvider = ({ children }) => {
-  const signin = (newUser, callBack) => {
+  const signin = (callBack) => {
     callBack();
   };
 

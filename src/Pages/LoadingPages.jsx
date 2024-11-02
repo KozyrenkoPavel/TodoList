@@ -1,7 +1,7 @@
-import { useNavigate } from 'react-router-dom';
-import { useUser } from '../hook/useUser';
-import { passAuthentication } from '../store/todoSlice';
-import { useDispatch } from 'react-redux';
+import { useNavigate } from "react-router-dom";
+import { useUser } from "../hook/useUser";
+import { passAuthentication } from "../store/todoSlice";
+import { useDispatch } from "react-redux";
 
 function LoadingPages() {
   const navigate = useNavigate();
@@ -14,23 +14,24 @@ function LoadingPages() {
     event.preventDefault();
 
     const form = event.target;
+
     const user = {
       username: form.username.value,
       password: form.password.value,
     };
 
-    const isUser = user?.username !== 'admin' || user?.password !== 'admin';
+    const isUser = user?.username !== "admin" || user?.password !== "admin";
 
     if (isUser) {
-      alert('Невероное имя пользователя или пароль');
-      form.username.value = '';
-      form.password.value = '';
+      alert("Невероное имя пользователя или пароль");
+      form.username.value = "";
+      form.password.value = "";
       return;
     }
 
     setAuthentication(user);
 
-    signin(user, () => navigate('/currentTodos', { replace: true }));
+    signin(() => navigate("/", { replace: true }));
   };
 
   return (

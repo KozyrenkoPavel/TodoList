@@ -1,7 +1,9 @@
+import AllTodos from "../Components/AllTodos";
+
 function AllTodosPages() {
   return (
     <div>
-      <h1>All Todos</h1>
+      <AllTodos />
     </div>
   );
 }
