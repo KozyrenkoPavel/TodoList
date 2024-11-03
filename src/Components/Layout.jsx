@@ -24,7 +24,7 @@ function Layout() {
     setText("");
   };
   return (
-    <>
+    <div className="loyout">
       <header>
         <div className="links">
           <NavLink className={setActive} to="/allTodos">
@@ -47,7 +47,7 @@ function Layout() {
       <Outlet />
 
       <button onClick={setOutAccount}>Выйти из учетной записи</button>
-    </>
+    </div>
   );
 }
 

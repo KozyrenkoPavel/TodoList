@@ -6,6 +6,10 @@ const todoSlice = createSlice({
     user: {},
     todos: [],
     todosDelete: [],
+    displayWindowStyle: {
+      display: "none",
+    },
+    displayLoading: { display: "block" },
   },
   reducers: {
     passAuthentication(state, action) {
@@ -36,6 +40,14 @@ const todoSlice = createSlice({
 
       togledTodo.completed = !togledTodo.completed;
     },
+    changeStyleWindow(state, action) {
+      state.displayWindowStyle = action.payload;
+    },
+    changeStyleLoading(state, action) {
+      console.log("++++++");
+
+      state.displayLoading = action.payload;
+    },
   },
 });
 
@@ -46,6 +58,8 @@ export const {
   removeTodo,
   togleTodoComplete,
   removeDeletedTodo,
+  changeStyleWindow,
+  changeStyleLoading,
 } = todoSlice.actions;
 
 export default todoSlice.reducer;

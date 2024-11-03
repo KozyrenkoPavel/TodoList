@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 function InputTodo({ text, handleInput, handleSubmit }) {
   return (
-    <div>
+    <div className="input-todo">
       <label>
         <input
           type="text"
