@@ -1,14 +1,14 @@
-import { NavLink, Outlet } from 'react-router-dom';
-import { addTodo, outAccount } from '../store/todoSlice';
-import { useDispatch } from 'react-redux';
-import { useState } from 'react';
-import InputTodo from './InputTodo';
+import { NavLink, Outlet } from "react-router-dom";
+import { addTodo, outAccount } from "../store/todoSlice";
+import { useDispatch } from "react-redux";
+import { useState } from "react";
+import InputTodo from "./InputTodo";
 
-const setActive = ({ isActive }) => (isActive ? 'active-link' : '');
+const setActive = ({ isActive }) => (isActive ? "active-link" : "");
 // window.localStorage.clear();
 function Layout() {
   const dispatch = useDispatch();
-  const [text, setText] = useState('');
+  const [text, setText] = useState("");
 
   const setOutAccount = () => dispatch(outAccount());
 
@@ -21,17 +21,23 @@ function Layout() {
       })
     );
 
-    setText('');
+    setText("");
   };
   return (
     <>
       <header>
         <div className="links">
-          <NavLink className={setActive} to="/">
-            Текущие дела
-          </NavLink>
           <NavLink className={setActive} to="/allTodos">
             Все
+          </NavLink>
+          <NavLink className={setActive} to="/">
+            Текущие
+          </NavLink>
+          <NavLink className={setActive} to="/completedTodos">
+            Выполненные
+          </NavLink>
+          <NavLink className={setActive} to="/deletedTodos">
+            Корзина
           </NavLink>
         </div>
       </header>

@@ -1,9 +1,11 @@
-import AllTodos from "../Components/AllTodos";
+import Todo from "../Components/Todo.jsx";
 
-function AllTodosPages() {
+function AllTodosPages({ todos }) {
   return (
-    <div>
-      <AllTodos />
+    <div className="all-todos">
+      {todos.map((todo) => {
+        return <Todo key={todo.id} {...todo} />;
+      })}
     </div>
   );
 }

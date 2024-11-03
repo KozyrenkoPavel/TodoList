@@ -1,10 +1,10 @@
 import Todo from "../Components/Todo";
 
-function CurrentTodosPages({ todos }) {
+function CompletedTodosPages({ todos }) {
   return (
     <div className="current-todos">
       {todos.map((todo) => {
-        if (!todo?.completed) {
+        if (todo?.completed) {
           return <Todo key={todo.id} {...todo} />;
         }
       })}
@@ -12,4 +12,4 @@ function CurrentTodosPages({ todos }) {
   );
 }
 
-export default CurrentTodosPages;
+export default CompletedTodosPages;
