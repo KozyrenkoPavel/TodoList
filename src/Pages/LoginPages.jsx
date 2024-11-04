@@ -4,8 +4,9 @@ import { passAuthentication } from "../store/todoSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { changeStyleWindow, changeStyleLoading } from "../store/todoSlice";
 import WindowNotAuthentication from "../Components/WindowNotAuthentication";
+import "./LoginPages.css";
 
-function LoadingPages() {
+function LoginPages() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { signin } = useUser();
@@ -15,9 +16,6 @@ function LoadingPages() {
   const styleLoading = useSelector(
     (state) => state.storeTodos.storeTodos.displayLoading
   );
-
-  console.log(styleWindow.display.display);
-  console.log(styleLoading.display.display);
 
   const setAuthentication = (user) => dispatch(passAuthentication(user));
 
@@ -30,10 +28,10 @@ function LoadingPages() {
   };
 
   const setStyleLoading = () => {
-    if (styleLoading.display === "block") {
+    if (styleLoading.display === "flex") {
       dispatch(changeStyleLoading({ display: "none" }));
     } else if (styleLoading.display === "none") {
-      dispatch(changeStyleLoading({ display: "block" }));
+      dispatch(changeStyleLoading({ display: "flex" }));
     }
   };
 
@@ -64,23 +62,26 @@ function LoadingPages() {
   };
 
   return (
-    <div className="loading">
+    <div className="login">
       <WindowNotAuthentication />
       <form
-        className="loading-form"
+        className="login--form"
         style={styleLoading}
         onSubmit={handleSubmit}
       >
-        <label>
-          UserName: <input type="text" name="username" />
-        </label>
-        <label>
-          Password: <input type="text" name="password" />
-        </label>
-        <button type="submit">Login</button>
+        <h3>Вход в учетную запись</h3>
+        <div className="login--form__content">
+          <label>
+            User Name: <input type="text" name="username" />
+          </label>
+          <label>
+            Password: <input type="text" name="password" />
+          </label>
+          <button className="login--btn" type="submit"></button>
+        </div>
       </form>
     </div>
   );
 }
 
-export default LoadingPages;
+export default LoginPages;

@@ -19,10 +19,10 @@ function WindowNotAuthentication() {
   };
 
   const setStyleLoading = () => {
-    if (styleLoading.display === "block") {
+    if (styleLoading.display === "flex") {
       dispatch(changeStyleLoading({ display: "none" }));
     } else if (styleLoading.display === "none") {
-      dispatch(changeStyleLoading({ display: "block" }));
+      dispatch(changeStyleLoading({ display: "flex" }));
     }
   };
 
@@ -34,9 +34,7 @@ function WindowNotAuthentication() {
           setStyleLoading();
           setStyleWindow();
         }}
-      >
-        ОК
-      </button>
+      ></button>
     </div>
   );
 }

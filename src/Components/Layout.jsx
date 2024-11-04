@@ -3,6 +3,7 @@ import { addTodo, outAccount } from "../store/todoSlice";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import InputTodo from "./InputTodo";
+import "./Layout.css";
 
 const setActive = ({ isActive }) => (isActive ? "active-link" : "");
 // window.localStorage.clear();
@@ -23,15 +24,20 @@ function Layout() {
 
     setText("");
   };
+
   return (
     <div className="loyout">
       <header>
+        <InputTodo text={text} handleInput={setText} handleSubmit={addTask} />
+      </header>
+
+      <div className="loyout--content">
         <div className="links">
-          <NavLink className={setActive} to="/allTodos">
-            Все
-          </NavLink>
           <NavLink className={setActive} to="/">
             Текущие
+          </NavLink>
+          <NavLink className={setActive} to="/allTodos">
+            Все
           </NavLink>
           <NavLink className={setActive} to="/completedTodos">
             Выполненные
@@ -40,13 +46,11 @@ function Layout() {
             Корзина
           </NavLink>
         </div>
-      </header>
 
-      <InputTodo text={text} handleInput={setText} handleSubmit={addTask} />
+        <Outlet />
+      </div>
 
-      <Outlet />
-
-      <button onClick={setOutAccount}>Выйти из учетной записи</button>
+      <button className="out--btn" onClick={setOutAccount}></button>
     </div>
   );
 }

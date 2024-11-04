@@ -9,7 +9,7 @@ const todoSlice = createSlice({
     displayWindowStyle: {
       display: "none",
     },
-    displayLoading: { display: "block" },
+    displayLoading: { display: "flex" },
   },
   reducers: {
     passAuthentication(state, action) {
@@ -19,7 +19,9 @@ const todoSlice = createSlice({
       state.user = {};
     },
     addTodo(state, action) {
-      state.todos.push(action.payload);
+      if (action.payload.text.trim().length) {
+        state.todos.push(action.payload);
+      }
     },
     removeTodo(state, action) {
       state.todos = state.todos.filter((todo) => {
@@ -44,9 +46,11 @@ const todoSlice = createSlice({
       state.displayWindowStyle = action.payload;
     },
     changeStyleLoading(state, action) {
-      console.log("++++++");
-
       state.displayLoading = action.payload;
+    },
+    removeAllTodos(state) {
+      state.todos = [];
+      state.todosDelete = [];
     },
   },
 });
@@ -60,6 +64,7 @@ export const {
   removeDeletedTodo,
   changeStyleWindow,
   changeStyleLoading,
+  removeAllTodos,
 } = todoSlice.actions;
 
 export default todoSlice.reducer;

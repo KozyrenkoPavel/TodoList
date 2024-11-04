@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import Layout from "./Components/Layout.jsx";
 import CurrentTodosPages from "./Pages/CurrentTodosPages.jsx";
 import AllTodosPages from "./Pages/AllTodosPages.jsx";
-import LoadingPages from "./Pages/LoadingPages.jsx";
+import LoginPages from "./Pages/LoginPages.jsx";
 import RequireUser from "./hoc/RequireUser.jsx";
 import CompletedTodosPages from "./Pages/CompletedTodosPages.jsx";
 import DeletedTodosPages from "./Pages/DeletedTodosPages.jsx";
@@ -17,34 +17,36 @@ function App() {
   );
 
   return (
-    <UserProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route element={<RequireUser />}>
-            <Route path="/" element={<Layout />}>
-              <Route
-                index={true}
-                element={<CurrentTodosPages todos={todos} />}
-              />
-              <Route
-                path="allTodos"
-                element={<AllTodosPages todos={todos} />}
-              />
-              <Route
-                path="completedTodos"
-                element={<CompletedTodosPages todos={todos} />}
-              />
-              <Route
-                path="deletedTodos"
-                element={<DeletedTodosPages deletedTodos={deletedTodos} />}
-              />
+    <div className="App">
+      <UserProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route element={<RequireUser />}>
+              <Route path="/" element={<Layout />}>
+                <Route
+                  index={true}
+                  element={<CurrentTodosPages todos={todos} />}
+                />
+                <Route
+                  path="allTodos"
+                  element={<AllTodosPages todos={todos} />}
+                />
+                <Route
+                  path="completedTodos"
+                  element={<CompletedTodosPages todos={todos} />}
+                />
+                <Route
+                  path="deletedTodos"
+                  element={<DeletedTodosPages deletedTodos={deletedTodos} />}
+                />
+              </Route>
             </Route>
-          </Route>
 
-          <Route path="/login" element={<LoadingPages />} />
-        </Routes>
-      </BrowserRouter>
-    </UserProvider>
+            <Route path="/login" element={<LoginPages />} />
+          </Routes>
+        </BrowserRouter>
+      </UserProvider>
+    </div>
   );
 }
 

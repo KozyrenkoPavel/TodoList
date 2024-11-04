@@ -1,0 +1,40 @@
+.layout {
+    width: 900px;
+    height: 100vh;
+    background-color: #666666;
+}
+
+.loyout--content {
+    width: 900px;
+    height: 100%;
+    background-color: #999999;
+    margin: 0 auto;
+    border-radius: 10px;
+    border: 1px solid #b4b7beb2;
+}
+
+.out--btn {
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: url('../icons/log-out.svg') center center no-repeat;
+    background-size: cover;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.links {
+    width: 650px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.links a {
+    height: 100%;
+    color: #000;
+}

@@ -6,6 +6,7 @@ import {
   togleTodoComplete,
 } from "../store/todoSlice";
 import { useLocation } from "react-router-dom";
+import "./Todo.css";
 
 function Todo({ id, text, completed }) {
   const dispatch = useDispatch();
@@ -18,24 +19,28 @@ function Todo({ id, text, completed }) {
 
   return (
     <li className="todo">
-      <input
-        type="checkbox"
-        checked={isCompleted}
-        onChange={() => togleTask()}
-      />
       <span>{text}</span>
-      <span
-        className="delete"
-        onClick={() => {
-          if (location.pathname !== "/deletedTodos") {
-            removeTask();
-          } else {
-            removeTaskDeleted();
-          }
-        }}
-      >
-        &times;
-      </span>
+      <div className="todo--buttons">
+        {location.pathname !== "/deletedTodos" && (
+          <input
+            className="todo--completed"
+            type="checkbox"
+            checked={isCompleted}
+            onChange={() => togleTask()}
+          />
+        )}
+
+        <span
+          className="delete"
+          onClick={() => {
+            if (location.pathname !== "/deletedTodos") {
+              removeTask();
+            } else {
+              removeTaskDeleted();
+            }
+          }}
+        ></span>
+      </div>
     </li>
   );
 }

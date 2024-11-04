@@ -1,0 +1,70 @@
+.input--todo {
+    width: 900px;
+    height: 90px; 
+    background-color: #999999;
+    margin: 0 auto;
+    border-radius: 10px;
+    border: 1px solid #b4b7beb2;
+    margin-top: 20px;
+    margin-bottom: 70px;
+}
+
+.input--todo__content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.input--todo input {
+    width: 445px;
+    height: 50px;
+    background: transparent;
+    font-size: 22px;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #b4b7beb2;
+}
+
+.input--todo input::placeholder {
+    text-align: center;
+    color: black;
+}
+
+.add--todo, .delete--todo{
+    width: 150px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 20px;
+    border-radius: 10px;
+    border: 2px solid #b4b7beb2;
+}
+
+.add--todo {
+    background-color: #0066FF;
+}
+
+.delete--todo {
+    background-color: #993333;
+}
+
+.add--todo__icon{
+    width: 20px;
+    height: 15px;
+    background: url('../icons/add-r.svg') center center no-repeat;
+    background-size: cover;
+}
+
+.delete--todo__icon {
+    width: 20px;
+    height: 20px;
+    background: url('../icons/pull-clear.svg') center center no-repeat;
+    background-size: cover;
+}
+
+.add--todo:hover, .delete--todo:hover {
+    cursor: pointer;
+}
